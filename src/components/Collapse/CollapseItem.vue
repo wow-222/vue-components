@@ -1,31 +1,3 @@
-<template>
-  <div
-    class="vk-collapse-item"
-    :class="{
-      'is-disabled': disabled
-    }"
-  >
-    <div
-      class="vk-collapse-item__header"
-      :class="{
-        'is-disabled': disabled,
-        'is-active': isActive
-      }"
-      :id="`item-header-${name}`"
-      @click="handleClick"
-    >
-      <slot name="title">{{ title }}</slot>
-      <!-- <Icon icon="angle-right" class="header-angle" /> -->
-    </div>
-    <Transition name="slide" v-on="transitionEvents">
-      <div class="vk-collapse-item__wrapper" v-show="isActive">
-        <div class="vk-collapse-item__content" :id="`item-content-${name}`">
-          <slot />
-        </div>
-      </div>
-    </Transition>
-  </div>
-</template>
 <script setup lang="ts">
 import { inject, computed } from 'vue'
 import type { CollapseItemProps } from './types'
@@ -65,3 +37,32 @@ const transitionEvents: Record<string, (el: HTMLElement) => void> = {
   }
 }
 </script>
+
+<template>
+  <div
+    class="vk-collapse-item"
+    :class="{
+      'is-disabled': disabled
+    }"
+  >
+    <div
+      class="vk-collapse-item__header"
+      :class="{
+        'is-disabled': disabled,
+        'is-active': isActive
+      }"
+      :id="`item-header-${name}`"
+      @click="handleClick"
+    >
+      <slot name="title">{{ title }}</slot>
+      <!-- <Icon icon="angle-right" class="header-angle" /> -->
+    </div>
+    <Transition name="slide" v-on="transitionEvents">
+      <div class="vk-collapse-item__wrapper" v-show="isActive">
+        <div class="vk-collapse-item__content" :id="`item-content-${name}`">
+          <slot />
+        </div>
+      </div>
+    </Transition>
+  </div>
+</template>

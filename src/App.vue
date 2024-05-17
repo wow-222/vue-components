@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import Button from './components/Button/Button.vue'
 import Collapse from './components/Collapse/Collapse.vue'
 import Item from './components/Collapse/CollapseItem.vue'
+import Tooltip from './components/Tooltip/Tooltip.vue'
 
 const buttonRef = ref<InstanceType<typeof Button> | null>(null)
 const model = defineModel({ default: ['a'] })
@@ -13,7 +14,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Button type="w" ref="buttonRef"></Button>
+  <Tooltip content="2222"><Button type="wuttt" ref="buttonRef"></Button></Tooltip>
   <Collapse v-model="model">
     <Item name="a">
       <template v-slot:title>
@@ -29,7 +30,6 @@ onMounted(() => {
       <div>this is cccc test</div>
     </Item>
   </Collapse>
-  {{ model }}
 </template>
 
 <style scoped></style>
